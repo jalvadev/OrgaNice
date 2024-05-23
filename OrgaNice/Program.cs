@@ -4,7 +4,7 @@ using OrgaNice.Responses;
 
 Console.WriteLine("Hello, World!");
 
-IResponse response = BaseWriter.AddUnit("Angular");
+IResponse response = BaseWriter.AddUnit("Angular:?_");
 Console.WriteLine(response.Success);
 Console.WriteLine(response.Message);
 

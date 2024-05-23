@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace OrgaNice.Responses
 {
-    internal interface IResponse
+    public interface IResponse
     {
         public bool Success { get; set; }
 

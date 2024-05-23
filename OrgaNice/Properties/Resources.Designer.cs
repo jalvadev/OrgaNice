@@ -22,7 +22,7 @@ namespace OrgaNice.Properties {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Resources {
+    public class Resources {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,7 +36,7 @@ namespace OrgaNice.Properties {
         ///   Devuelve la instancia de ResourceManager almacenada en caché utilizada por esta clase.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("OrgaNice.Properties.Resources", typeof(Resources).Assembly);
@@ -51,7 +51,7 @@ namespace OrgaNice.Properties {
         ///   búsquedas de recursos mediante esta clase de recurso fuertemente tipado.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -63,7 +63,7 @@ namespace OrgaNice.Properties {
         /// <summary>
         ///   Busca una cadena traducida similar a No se encuentra el directorio..
         /// </summary>
-        internal static string error_directory_not_found {
+        public static string error_directory_not_found {
             get {
                 return ResourceManager.GetString("error_directory_not_found", resourceCulture);
             }
@@ -72,7 +72,7 @@ namespace OrgaNice.Properties {
         /// <summary>
         ///   Busca una cadena traducida similar a Ya existe una unidad con ese nombre..
         /// </summary>
-        internal static string error_existent_unit {
+        public static string error_existent_unit {
             get {
                 return ResourceManager.GetString("error_existent_unit", resourceCulture);
             }
@@ -81,7 +81,7 @@ namespace OrgaNice.Properties {
         /// <summary>
         ///   Busca una cadena traducida similar a El nombre de la unidad no es soportado por tu sistema..
         /// </summary>
-        internal static string error_not_supported_name {
+        public static string error_not_supported_name {
             get {
                 return ResourceManager.GetString("error_not_supported_name", resourceCulture);
             }
@@ -90,7 +90,7 @@ namespace OrgaNice.Properties {
         /// <summary>
         ///   Busca una cadena traducida similar a No tienes permisos de escritura..
         /// </summary>
-        internal static string error_not_write_permissions {
+        public static string error_not_write_permissions {
             get {
                 return ResourceManager.GetString("error_not_write_permissions", resourceCulture);
             }
@@ -99,7 +99,7 @@ namespace OrgaNice.Properties {
         /// <summary>
         ///   Busca una cadena traducida similar a Ocurrió un error inesperado al crear la unidad..
         /// </summary>
-        internal static string error_unespected {
+        public static string error_unespected {
             get {
                 return ResourceManager.GetString("error_unespected", resourceCulture);
             }
@@ -108,7 +108,7 @@ namespace OrgaNice.Properties {
         /// <summary>
         ///   Busca una cadena traducida similar a La unidad {0} se creó correctamente!.
         /// </summary>
-        internal static string success_unit_created {
+        public static string success_unit_created {
             get {
                 return ResourceManager.GetString("success_unit_created", resourceCulture);
             }

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace OrgaNice.DAL
 {
-    internal static class BaseWriter
+    public static class BaseWriter
     {
         const string BASE_FOLDER = "C:\\Data\\Organice"; // TODO: Cambiar por configuración
 
@@ -26,21 +26,16 @@ namespace OrgaNice.DAL
 
                 return new SimpleResponse { Success = true, Message = successMessage };
             }
-            catch (NotSupportedException)
+            catch (Exception ex)
             {
-                return new SimpleResponse { Success = false, Message = Resources.error_not_supported_name };
-            }
-            catch (UnauthorizedAccessException) 
-            {
-                return new SimpleResponse { Success = false, Message = Resources.error_not_write_permissions };
-            }
-            catch (DirectoryNotFoundException)
-            {
-                return new SimpleResponse { Success = false, Message = Resources.error_directory_not_found };
-            }
-            catch (Exception)
-            {
-                return new SimpleResponse { Success = false, Message = Resources.error_unespected };
+                if(ex is NotSupportedException || ex is IOException)
+                    return new SimpleResponse { Success = false, Message = Resources.error_not_supported_name };
+                else if (ex is UnauthorizedAccessException)
+                    return new SimpleResponse { Success = false, Message = Resources.error_not_write_permissions };
+                else if (ex is DirectoryNotFoundException)
+                    return new SimpleResponse { Success = false, Message = Resources.error_directory_not_found };
+                else
+                    return new SimpleResponse { Success = false, Message = Resources.error_unespected };
             }
 
         }
