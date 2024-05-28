@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace OrgaNice.Responses
 {
-    internal class ComplexResponse <T> : IResponse
+    public class ComplexResponse <T> : IResponse
     {
         public bool Success { get; set; }
         public string Message { get; set; }

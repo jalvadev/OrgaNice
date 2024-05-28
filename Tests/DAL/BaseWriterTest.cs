@@ -115,7 +115,34 @@ namespace Tests.DAL
         }
 
         [Test]
-        public void Order5_DeleteChapter_ReturnTrue()
+        public void Order5_WriteChapter_ReturnTrue()
+        {
+            var unitName = "Unidad 01";
+            var chapterName = "Chapter";
+
+            var response = BaseWriter.WriteIntoChapter(unitName, chapterName, "Hola desde el test!");
+
+            Assert.That(response.Success, Is.True);
+            Assert.That(response.Message, Is.EqualTo(Resources.success_write_chapter));
+        }
+
+        [Test]
+        public void Order6_ReadChapter_ReturnTrue()
+        {
+            var unitName = "Unidad 01";
+            var chapterName = "Chapter";
+            var text = "Hola desde el test!";
+
+            var response = BaseWriter.ReadChapter(unitName, chapterName);
+
+            Assert.That(response.Success, Is.True);
+            Assert.That(response.Message, Is.EqualTo(Resources.success_read_chapter));
+            Assert.True(response is ComplexResponse<string>);
+            Assert.That((response as ComplexResponse<string>).Result, Is.EqualTo(text));
+        }
+
+        [Test]
+        public void Order7_DeleteChapter_ReturnTrue()
         {
             var unitName = "Unidad 01";
             var chapterName = "Chapter";

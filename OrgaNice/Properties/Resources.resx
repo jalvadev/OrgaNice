@@ -147,6 +147,12 @@
   <data name="error_unexpected_chapter_delete" xml:space="preserve">
     <value>Ocurrió un error inesperado al borrar el  capítulo.</value>
   </data>
+  <data name="error_unexpected_chapter_read" xml:space="preserve">
+    <value>Ocurrió un error al leer el capítulo.</value>
+  </data>
+  <data name="error_unexpected_chapter_write" xml:space="preserve">
+    <value>Ocurrió un error al guardar el capítulo.</value>
+  </data>
   <data name="error_unit_not_empty" xml:space="preserve">
     <value>La unidad que intenta eliminar no está vacía.</value>
   </data>
@@ -156,10 +162,16 @@
   <data name="success_chapter_deleted" xml:space="preserve">
     <value>El capítulo {0} se borró de {1}!</value>
   </data>
+  <data name="success_read_chapter" xml:space="preserve">
+    <value>El capítulo se leyó correctamente!</value>
+  </data>
   <data name="success_unit_created" xml:space="preserve">
     <value>La unidad {0} se creó correctamente!</value>
   </data>
   <data name="success_unit_deleted" xml:space="preserve">
     <value>La unidad {0} se borró correctamente!</value>
+  </data>
+  <data name="success_write_chapter" xml:space="preserve">
+    <value>Capítulo guardado con éxito!</value>
   </data>
 </root>

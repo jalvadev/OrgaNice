@@ -151,6 +151,24 @@ namespace OrgaNice.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Ocurrió un error al leer el capítulo..
+        /// </summary>
+        public static string error_unexpected_chapter_read {
+            get {
+                return ResourceManager.GetString("error_unexpected_chapter_read", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Ocurrió un error al guardar el capítulo..
+        /// </summary>
+        public static string error_unexpected_chapter_write {
+            get {
+                return ResourceManager.GetString("error_unexpected_chapter_write", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a La unidad que intenta eliminar no está vacía..
         /// </summary>
         public static string error_unit_not_empty {
@@ -178,6 +196,15 @@ namespace OrgaNice.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a El capítulo se leyó correctamente!.
+        /// </summary>
+        public static string success_read_chapter {
+            get {
+                return ResourceManager.GetString("success_read_chapter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a La unidad {0} se creó correctamente!.
         /// </summary>
         public static string success_unit_created {
@@ -192,6 +219,15 @@ namespace OrgaNice.Properties {
         public static string success_unit_deleted {
             get {
                 return ResourceManager.GetString("success_unit_deleted", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Capítulo guardado con éxito!.
+        /// </summary>
+        public static string success_write_chapter {
+            get {
+                return ResourceManager.GetString("success_write_chapter", resourceCulture);
             }
         }
     }

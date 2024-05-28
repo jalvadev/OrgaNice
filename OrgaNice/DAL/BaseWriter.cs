@@ -117,5 +117,52 @@ namespace OrgaNice.DAL
                     return new SimpleResponse { Success = false, Message = Resources.error_unexpected_chapter_delete };
             }
         }
+
+        public static IResponse WriteIntoChapter(string unitName, string chapterName, string content)
+        {
+            string fullPath = $"{BASE_FOLDER}{Path.AltDirectorySeparatorChar}{unitName}{Path.AltDirectorySeparatorChar}{chapterName}{MD_EXTENSION}";
+
+            if (!File.Exists(fullPath))
+                return new SimpleResponse { Success = false, Message = Resources.error_unexistent_chapter };
+
+            try
+            {
+                using (StreamWriter writer = new StreamWriter(fullPath))
+                {
+                    writer.Write(content);
+                }
+
+
+                return new SimpleResponse { Success = true, Message = Resources.success_write_chapter };
+            }
+            catch(Exception ex)
+            {
+                return new SimpleResponse { Success = false, Message = Resources.error_unexpected_chapter_write };
+            }
+        }
+
+        public static IResponse ReadChapter(string unitName, string chapterName)
+        {
+            string fullPath = $"{BASE_FOLDER}{Path.AltDirectorySeparatorChar}{unitName}{Path.AltDirectorySeparatorChar}{chapterName}{MD_EXTENSION}";
+
+            if (!File.Exists(fullPath))
+                return new SimpleResponse { Success = false, Message = Resources.error_unexistent_chapter };
+
+            try
+            {
+                string content;
+                using (StreamReader reader = new StreamReader(fullPath))
+                {
+                    content = reader.ReadToEnd();
+                }
+
+
+                return new ComplexResponse <string> { Success = true, Message = Resources.success_read_chapter, Result = content };
+            }
+            catch (Exception ex)
+            {
+                return new SimpleResponse { Success = false, Message = Resources.error_unexpected_chapter_read };
+            }
+        }
     }
 }
