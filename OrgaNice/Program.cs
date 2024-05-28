@@ -12,4 +12,8 @@ response = BaseWriter.AddUnit("Angular");
 Console.WriteLine(response.Success);
 Console.WriteLine(response.Message);
 
+response = BaseWriter.DeleteUnit("Angular");
+Console.WriteLine(response.Success);
+Console.WriteLine(response.Message);
+
 Console.ReadLine();

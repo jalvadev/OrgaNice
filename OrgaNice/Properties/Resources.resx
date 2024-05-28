@@ -132,7 +132,13 @@
   <data name="error_unespected" xml:space="preserve">
     <value>Ocurrió un error inesperado al crear la unidad.</value>
   </data>
+  <data name="error_unexistent_unit" xml:space="preserve">
+    <value>No existe una unidad con ese nombre.</value>
+  </data>
   <data name="success_unit_created" xml:space="preserve">
     <value>La unidad {0} se creó correctamente!</value>
+  </data>
+  <data name="success_unit_deleted" xml:space="preserve">
+    <value>La unidad {0} se borró correctamente!</value>
   </data>
 </root>

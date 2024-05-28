@@ -106,11 +106,29 @@ namespace OrgaNice.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a No existe una unidad con ese nombre..
+        /// </summary>
+        public static string error_unexistent_unit {
+            get {
+                return ResourceManager.GetString("error_unexistent_unit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a La unidad {0} se creó correctamente!.
         /// </summary>
         public static string success_unit_created {
             get {
                 return ResourceManager.GetString("success_unit_created", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a La unidad {0} se borró correctamente!.
+        /// </summary>
+        public static string success_unit_deleted {
+            get {
+                return ResourceManager.GetString("success_unit_deleted", resourceCulture);
             }
         }
     }
