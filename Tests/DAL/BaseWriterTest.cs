@@ -13,13 +13,22 @@ namespace Tests.DAL
     [TestFixture]
     internal class BaseWriterTest
     {
+        private const string TEST_UNIT_NAME = "Angular";
+
+        [Test]
+        public void NewFolder_ReturnTrue()
+        {
+            var responseMessage = string.Format(Resources.success_unit_created, TEST_UNIT_NAME);
+            var response = BaseWriter.AddUnit(TEST_UNIT_NAME);
+
+            Assert.That(response.Success, Is.True);
+            Assert.That(response.Message, Is.EqualTo(responseMessage));
+        }
 
         [Test]
         public void NewFolderExistent_ReturnFalse()
         {
-            BaseWriter.AddUnit("Angular");
-
-            var response = BaseWriter.AddUnit("Angular");
+            var response = BaseWriter.AddUnit(TEST_UNIT_NAME);
 
             Assert.That(response.Success, Is.False);
             Assert.That(response.Message, Is.EqualTo(Resources.error_existent_unit));
