@@ -63,5 +63,71 @@ namespace Tests.DAL
             Assert.That(response.Success, Is.True);
             Assert.That(response.Message, Is.EqualTo(responseMessage));
         }
+
+
+        // Chapter Tests
+        [Test]
+        public void Order1_NewChapterWithNoUnit_ReturnFalse()
+        {
+            var unitName = "Unidad 01";
+            var chapterName = "Chapter";
+
+            var response = BaseWriter.AddChapter(unitName, chapterName);
+
+            Assert.That(response.Success, Is.False);
+            Assert.That(response.Message, Is.EqualTo(Resources.error_unexistent_unit));
+        }
+
+        [Test]
+        public void Order2_NewChapter_ReturnTrue()
+        {
+            var unitName = "Unidad 01";
+            var chapterName = "Chapter";
+            var responseMessage = string.Format(Resources.success_chapter_created, chapterName, unitName);
+            BaseWriter.AddUnit(unitName);
+            var response = BaseWriter.AddChapter(unitName, chapterName);
+
+            Assert.That(response.Success, Is.True);
+            Assert.That(response.Message, Is.EqualTo(responseMessage));
+        }
+
+        [Test]
+        public void Order3_NewChapterDeleteUnit_ReturnFalse()
+        {
+            var unitName = "Unidad 01";
+           
+            var response = BaseWriter.DeleteUnit(unitName);
+
+            Assert.That(response.Success, Is.False);
+            Assert.That(response.Message, Is.EqualTo(Resources.error_unit_not_empty));
+        }
+
+        [Test]
+        public void Order4_DeleteChapterNotFound_ReturnFalse()
+        {
+            var unitName = "Unidad 01";
+            var chapterName = "Chapter 2";
+
+            var response = BaseWriter.DeleteChapter(unitName, chapterName);
+
+            Assert.That(response.Success, Is.False);
+            Assert.That(response.Message, Is.EqualTo(Resources.error_unexistent_chapter));
+        }
+
+        [Test]
+        public void Order5_DeleteChapter_ReturnTrue()
+        {
+            var unitName = "Unidad 01";
+            var chapterName = "Chapter";
+            var responseMessage = string.Format(Resources.success_chapter_deleted, chapterName, unitName);
+
+            var response = BaseWriter.DeleteChapter(unitName, chapterName);
+            
+            Assert.That(response.Success, Is.True);
+            Assert.That(response.Message, Is.EqualTo(responseMessage));
+
+            // Just to clean the folder
+            BaseWriter.DeleteUnit(unitName);
+        }
     }
 }

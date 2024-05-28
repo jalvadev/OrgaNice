@@ -11,6 +11,7 @@ namespace OrgaNice.DAL
     public static class BaseWriter
     {
         const string BASE_FOLDER = "C:\\Data\\Organice"; // TODO: Cambiar por configuración
+        const string MD_EXTENSION = ".md";
 
         public static IResponse AddUnit(string unitName)
         {
@@ -46,6 +47,9 @@ namespace OrgaNice.DAL
             if (!Directory.Exists(fullPath))
                 return new SimpleResponse { Success = false, Message = Resources.error_unexistent_unit };
 
+            if (Directory.EnumerateFiles(fullPath).Count() > 0)
+                return new SimpleResponse { Success = false, Message = Resources.error_unit_not_empty };
+
             try
             {
                 Directory.Delete(fullPath);
@@ -63,6 +67,54 @@ namespace OrgaNice.DAL
                     return new SimpleResponse { Success = false, Message = Resources.error_directory_not_found };
                 else
                     return new SimpleResponse { Success = false, Message = Resources.error_unespected };
+            }
+        }
+
+        public static IResponse AddChapter(string unitName, string chapterName)
+        {
+            string fullPath = $"{BASE_FOLDER}{Path.AltDirectorySeparatorChar}{unitName}{Path.AltDirectorySeparatorChar}{chapterName}{MD_EXTENSION}";
+
+            if(File.Exists(fullPath))
+                return new SimpleResponse { Success = false, Message = Resources.error_existent_chapter };
+
+            try
+            {
+                File.Create(fullPath).Close();
+                string successMessage = string.Format(Resources.success_chapter_created, chapterName, unitName);
+
+                return new SimpleResponse { Success = true, Message = successMessage };
+            }
+            catch(Exception ex)
+            {
+                if (ex is DirectoryNotFoundException)
+                    return new SimpleResponse { Success = false, Message = Resources.error_unexistent_unit };
+                else
+                    return new SimpleResponse { Success = false, Message = Resources.error_unespected };
+            }
+        }
+
+        public static IResponse DeleteChapter(string unitName, string chapterName)
+        {
+            string fullPath = $"{BASE_FOLDER}{Path.AltDirectorySeparatorChar}{unitName}{Path.AltDirectorySeparatorChar}{chapterName}{MD_EXTENSION}";
+
+            if (!File.Exists(fullPath))
+                return new SimpleResponse { Success = false, Message = Resources.error_unexistent_chapter };
+
+            try
+            {
+                File.Delete(fullPath);
+                string successMessage = string.Format(Resources.success_chapter_deleted, chapterName, unitName);
+
+                return new SimpleResponse { Success = true, Message = successMessage };
+            }
+            catch (Exception ex)
+            {
+                if (ex is DirectoryNotFoundException)
+                    return new SimpleResponse { Success = false, Message = Resources.error_unexistent_unit };
+                else if (ex is IOException)
+                    return new SimpleResponse { Success = false, Message = Resources.error_chapter_busy };
+                else
+                    return new SimpleResponse { Success = false, Message = Resources.error_unexpected_chapter_delete };
             }
         }
     }

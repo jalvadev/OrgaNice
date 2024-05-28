@@ -61,11 +61,29 @@ namespace OrgaNice.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a El capítulo está siendo utilizado por otro proceso..
+        /// </summary>
+        public static string error_chapter_busy {
+            get {
+                return ResourceManager.GetString("error_chapter_busy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a No se encuentra el directorio..
         /// </summary>
         public static string error_directory_not_found {
             get {
                 return ResourceManager.GetString("error_directory_not_found", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Ya existe un capítulo con ese nombre..
+        /// </summary>
+        public static string error_existent_chapter {
+            get {
+                return ResourceManager.GetString("error_existent_chapter", resourceCulture);
             }
         }
         
@@ -106,11 +124,56 @@ namespace OrgaNice.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a No existe un capítulo con ese nombre..
+        /// </summary>
+        public static string error_unexistent_chapter {
+            get {
+                return ResourceManager.GetString("error_unexistent_chapter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a No existe una unidad con ese nombre..
         /// </summary>
         public static string error_unexistent_unit {
             get {
                 return ResourceManager.GetString("error_unexistent_unit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Ocurrió un error inesperado al borrar el  capítulo..
+        /// </summary>
+        public static string error_unexpected_chapter_delete {
+            get {
+                return ResourceManager.GetString("error_unexpected_chapter_delete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a La unidad que intenta eliminar no está vacía..
+        /// </summary>
+        public static string error_unit_not_empty {
+            get {
+                return ResourceManager.GetString("error_unit_not_empty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a {0} se ha creado en {1}!.
+        /// </summary>
+        public static string success_chapter_created {
+            get {
+                return ResourceManager.GetString("success_chapter_created", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a El capítulo {0} se borró de {1}!.
+        /// </summary>
+        public static string success_chapter_deleted {
+            get {
+                return ResourceManager.GetString("success_chapter_deleted", resourceCulture);
             }
         }
         

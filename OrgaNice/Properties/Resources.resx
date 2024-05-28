@@ -117,8 +117,14 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="error_chapter_busy" xml:space="preserve">
+    <value>El capítulo está siendo utilizado por otro proceso.</value>
+  </data>
   <data name="error_directory_not_found" xml:space="preserve">
     <value>No se encuentra el directorio.</value>
+  </data>
+  <data name="error_existent_chapter" xml:space="preserve">
+    <value>Ya existe un capítulo con ese nombre.</value>
   </data>
   <data name="error_existent_unit" xml:space="preserve">
     <value>Ya existe una unidad con ese nombre.</value>
@@ -132,8 +138,23 @@
   <data name="error_unespected" xml:space="preserve">
     <value>Ocurrió un error inesperado al crear la unidad.</value>
   </data>
+  <data name="error_unexistent_chapter" xml:space="preserve">
+    <value>No existe un capítulo con ese nombre.</value>
+  </data>
   <data name="error_unexistent_unit" xml:space="preserve">
     <value>No existe una unidad con ese nombre.</value>
+  </data>
+  <data name="error_unexpected_chapter_delete" xml:space="preserve">
+    <value>Ocurrió un error inesperado al borrar el  capítulo.</value>
+  </data>
+  <data name="error_unit_not_empty" xml:space="preserve">
+    <value>La unidad que intenta eliminar no está vacía.</value>
+  </data>
+  <data name="success_chapter_created" xml:space="preserve">
+    <value>{0} se ha creado en {1}!</value>
+  </data>
+  <data name="success_chapter_deleted" xml:space="preserve">
+    <value>El capítulo {0} se borró de {1}!</value>
   </data>
   <data name="success_unit_created" xml:space="preserve">
     <value>La unidad {0} se creó correctamente!</value>
