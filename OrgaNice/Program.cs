@@ -1,30 +1,36 @@
-﻿// See https://aka.ms/new-console-template for more information
-using OrgaNice.DAL;
+﻿using OrgaNice.DAL;
 using OrgaNice.Properties;
 using OrgaNice.Responses;
+using OrgaNice.UI;
 
-//Console.WriteLine("Hello, World!");
+bool exit = false;
+string message = "Welcome to Organice!";
 
-//IResponse response = BaseWriter.AddUnit("Angular:?_");
-//Console.WriteLine(response.Success);
-//Console.WriteLine(response.Message);
+while(!exit)
+{
+    Console.WriteLine(message);
+    MenuUI.Refresh();
+    MenuUI.PrintMainMenu();
 
-//response = BaseWriter.AddUnit("Angular");
-//Console.WriteLine(response.Success);
-//Console.WriteLine(response.Message);
+    string? userResponse = Console.ReadLine();
+    IResponse response = MenuUI.ProccessRequest(userResponse);
 
-//response = BaseWriter.AddChapter("Angular", "Unidad1");
-//Console.WriteLine(response.Success);
-//Console.WriteLine(response.Message);
+    if (response.Success)
+    {
+        switch ((response as ComplexResponse<int>).Result)
+        {
+            case 1:
+                MenuUI.CreateUnit();
+                break;
+            case 2:
+                break;
+            case 3:
+                break;
+            case 4:
+                exit = true;
+                break;
+        }
+    }
 
-//response = BaseWriter.DeleteUnit("Angular");
-//Console.WriteLine(response.Success);
-//Console.WriteLine(response.Message);
-
-var unitName = "Unidad 01";
-var chapterName = "Chapter";
-var responseMessage = string.Format(Resources.success_chapter_deleted, chapterName, unitName);
-
-var response = BaseWriter.DeleteChapter(unitName, chapterName);
-
-Console.ReadLine();
+    message = response.Message;
+}
