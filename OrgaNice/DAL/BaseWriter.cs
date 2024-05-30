@@ -13,6 +13,23 @@ namespace OrgaNice.DAL
         const string BASE_FOLDER = "C:\\Data\\Organice"; // TODO: Cambiar por configuración
         const string MD_EXTENSION = ".md";
 
+
+        public static IResponse ListUnits()
+        {
+            List<string> units = new List<string>();
+
+            DirectoryInfo info = new DirectoryInfo(BASE_FOLDER);
+
+            DirectoryInfo[] directories = info.GetDirectories();
+
+            foreach (DirectoryInfo d in directories)
+            {
+                units.Add(d.Name);
+            }
+
+            return new ComplexResponse <List<string>>{ Success = true, Message = "", Result = units };
+        }
+
         public static IResponse AddUnit(string unitName)
         {
             string fullPath = $"{BASE_FOLDER}{Path.AltDirectorySeparatorChar}{unitName}";

@@ -8,8 +8,9 @@ string message = "Welcome to Organice!";
 
 while(!exit)
 {
-    Console.WriteLine(message);
     MenuUI.Refresh();
+    Console.WriteLine(message);
+    Console.WriteLine("-------------------------------------");
     MenuUI.PrintMainMenu();
 
     string? userResponse = Console.ReadLine();
@@ -20,9 +21,10 @@ while(!exit)
         switch ((response as ComplexResponse<int>).Result)
         {
             case 1:
-                MenuUI.CreateUnit();
+                response = MenuUI.CreateUnit();
                 break;
             case 2:
+                response = MenuUI.ListUnits();
                 break;
             case 3:
                 break;

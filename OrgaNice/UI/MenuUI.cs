@@ -38,15 +38,54 @@ namespace OrgaNice.UI
         }
 
 
-
         public static IResponse CreateUnit()
         {
             Console.Clear();
             Console.Write("Nombre de la nueva unidad: ");
-            
-            string unitName = Console.ReadLine();
+
+            var keyInfo = Console.ReadKey(true);
+
+            var modifier = keyInfo.Modifiers;
+            var key = keyInfo.Key;
+
+            if (modifier == ConsoleModifiers.Control && key == ConsoleKey.Z)
+                return null;
+            else
+                Console.Write(key);
+
+            string unitName = key + Console.ReadLine();
 
             return BaseWriter.AddUnit(unitName);
+        }
+
+        public static IResponse ListUnits()
+        {
+            string message = "";
+            IResponse response = BaseWriter.ListUnits();
+            if (response.Success == false)
+            {
+                Console.WriteLine(response.Message);
+                return response;
+            }
+                
+
+            List<string> units = (response as ComplexResponse<List<string>>).Result;
+            if (units.Count == 0)
+                Console.WriteLine("No hay unidades que mostrar.");
+            else
+            {
+                for (int i = 0; i < units.Count; i++)
+                {
+                    string currentUnit = units[i];
+                    message += currentUnit;
+
+                    if(i < units.Count - 1)
+                        message += "\n";
+                }
+                response.Message = message;
+            }
+
+            return response;
         }
     }
 }
