@@ -27,6 +27,11 @@ namespace OrgaNice.UI
                 new SimpleResponse { Success = success, Message = "" };
         }
 
+        public static void PrintMenu()
+        {
+
+        }
+
         public static void PrintMainMenu()
         {
             Console.WriteLine("1 - Crear unidad.");
@@ -36,6 +41,7 @@ namespace OrgaNice.UI
 
             Console.Write("¿Que quieres hacer?");
         }
+
 
 
         public static IResponse CreateUnit()
@@ -86,6 +92,31 @@ namespace OrgaNice.UI
             }
 
             return response;
+        }
+
+        public static IResponse SelectUnit()
+        {
+            IResponse response;
+
+            Console.Clear();
+            Console.Write("Nombre de la nueva unidad: ");
+
+            var keyInfo = Console.ReadKey(true);
+
+            var modifier = keyInfo.Modifiers;
+            var key = keyInfo.Key;
+
+            if (modifier == ConsoleModifiers.Control && key == ConsoleKey.Z)
+                return null;
+            else
+                Console.Write(key);
+
+            string unitName = key + Console.ReadLine();
+            response = BaseWriter.CheckUnitExists(unitName);
+            if (!response.Success)
+                return response;
+
+            return new ComplexResponse<string> { Success = true, Message = string.Format("Seleccionada la unidad {0}!", unitName), Result = unitName };
         }
     }
 }

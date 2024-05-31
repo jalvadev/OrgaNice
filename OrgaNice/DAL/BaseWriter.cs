@@ -30,6 +30,15 @@ namespace OrgaNice.DAL
             return new ComplexResponse <List<string>>{ Success = true, Message = "", Result = units };
         }
 
+        public static IResponse CheckUnitExists(string unitName)
+        {
+            string fullPath = $"{BASE_FOLDER}{Path.AltDirectorySeparatorChar}{unitName}";
+
+            return Directory.Exists(fullPath) ?
+                new SimpleResponse { Success = true, Message = "La unidad existe!" } :
+                new SimpleResponse { Success = false, Message = string.Format("La unidad {0} no existe.", unitName) };
+        }
+
         public static IResponse AddUnit(string unitName)
         {
             string fullPath = $"{BASE_FOLDER}{Path.AltDirectorySeparatorChar}{unitName}";
@@ -85,6 +94,23 @@ namespace OrgaNice.DAL
                 else
                     return new SimpleResponse { Success = false, Message = Resources.error_unespected };
             }
+        }
+
+        public static IResponse ListChapters(string unitName)
+        {
+            string fullPath = $"{BASE_FOLDER}{Path.AltDirectorySeparatorChar}{unitName}";
+            List<string> chapters = new List<string>();
+
+            DirectoryInfo info = new DirectoryInfo(fullPath);
+
+            FileInfo[] files = info.GetFiles();
+
+            foreach (FileInfo d in files)
+            {
+                chapters.Add(d.Name);
+            }
+
+            return new ComplexResponse<List<string>> { Success = true, Message = "", Result = chapters };
         }
 
         public static IResponse AddChapter(string unitName, string chapterName)
